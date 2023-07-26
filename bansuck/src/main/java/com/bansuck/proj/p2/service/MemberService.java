@@ -25,4 +25,19 @@ public interface MemberService {
      */
     public MemberDto memberSelectOne(MemberDto memberDto) throws Exception;
     
+    /**
+     * 사용자 정보 수정
+     * @param memberDto
+     * @return
+     * @throws Exception
+     */
+    public int memberUpdateOne(MemberDto memberDto) throws Exception;
+    
+    /**
+     * 사용자 계정 활성화/비활성화
+     * @param memberDto
+     * @return
+     * @throws Exception
+     */
+    public int memberDeleteOne(MemberDto memberDto) throws Exception;
 }

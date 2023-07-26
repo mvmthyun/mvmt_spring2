@@ -26,4 +26,12 @@ public class MemberDao {
     public MemberDto memberSelectOne(MemberDto memberDto) throws Exception {
         return session.selectOne(nameSpace + "memberSelectOne", memberDto);
     }
+    
+    public int memberUpdateOne(MemberDto memberDto) throws Exception {
+        return session.update(nameSpace + "memberUpdateOne", memberDto);
+    }
+    
+    public int memberDeleteOne(MemberDto memberDto) throws Exception {
+        return session.update(nameSpace + "memberDeleteOne", memberDto);
+    }
 }

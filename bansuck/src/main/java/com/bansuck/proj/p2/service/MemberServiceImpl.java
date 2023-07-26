@@ -23,4 +23,12 @@ public class MemberServiceImpl implements MemberService {
         return memberDao.memberSelectOne(memberDto);
     }
     
+    public int memberUpdateOne(MemberDto memberDto) throws Exception {
+        return memberDao.memberUpdateOne(memberDto);
+    }
+    
+    public int memberDeleteOne(MemberDto memberDto) throws Exception {
+        return memberDao.memberDeleteOne(memberDto);
+    }
+    
 }

@@ -37,5 +37,28 @@
 		WHERE 1=1
 		    AND MEMBER_EMAIL = #{memberEmail}
     </select>
+    
+    <!-- 사용자 정보 수정 -->
+    <update id="memberUpdateOne" parameterType="MemberDto">
+    	UPDATE BANSUCK.MEMBERS
+		SET 
+		    MEMBER_PASSWORD = #{memberPassword}
+		    , MEMBER_NAME = #{memberName}
+		    , MEMBER_NUMBER = #{memberNumber}
+		    , MEMBER_ADDR = #{memberAddr}
+		    , MEMBER_MODIFIED_AT = NOW()
+		WHERE 1=1
+		    AND MEMBER_EMAIL = #{memberEmail}
+    </update>
+    
+    <!-- 사용자 정보 활성화/비활성화 -->
+    <update id="memberDeleteOne" parameterType="MemberDto">
+    	UPDATE BANSUCK.MEMBERS
+		SET 
+		    MEMBER_ACTIVATION = #{memberActivation}
+		    , MEMBER_MODIFIED_AT = NOW()
+		WHERE 1=1
+		    AND MEMBER_EMAIL = #{memberEmail}
+    </update>
 
 </mapper>

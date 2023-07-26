@@ -2,6 +2,7 @@ package com.bansuck.proj.p2.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import javax.annotation.Resource;
 
@@ -50,12 +51,12 @@ public class MemberApiController {
     }
     
     /**
-     * @param memberDto=getMemberMmail
+     * @param memberDto
      * @return
      * @throws Exception
      */
     @PostMapping("/search")
-    public String apiSearch(@RequestBody MemberDto memberDto, Model m) throws Exception {
+    public MemberDto apiSearch(@RequestBody MemberDto memberDto) throws Exception {
         
         String email = memberDto.getMemberEmail();
         
@@ -73,8 +74,36 @@ public class MemberApiController {
         memberDto = memberService.memberSelectOne(memberDto);
         logger.info("(apiSignup) >>> MemberDto: {} ", memberDto);
         
-        m.addAttribute("member", memberDto);
+        return memberDto;
+    }
+    
+    /**
+     * @param memberDto
+     * @return
+     * @throws Exception
+     */
+    @PostMapping("/update")
+    public MemberDto apiUpdate(@RequestBody MemberDto memberDto) throws Exception {
         
-        return "member";
+        Function<Integer, String> resultLambda = result -> result == 1 ? "성공" : "실패";
+        int result = memberService.memberUpdateOne(memberDto);
+        logger.info("(apiUpdate) >>> memberUpdateOne: " + resultLambda.apply(result));
+        
+        return memberDto;
+    }
+    
+    /**
+     * @param memberDto
+     * @return
+     * @throws Exception
+     */
+    @PostMapping("/del")
+    public MemberDto apiDelete(@RequestBody MemberDto memberDto) throws Exception {
+        
+        Function<Integer, String> resultLambda = result -> result == 1 ? "성공" : "실패";
+        int result = memberService.memberDeleteOne(memberDto);
+        logger.info("(apiDelete) >>> memberDeleteOne: " + resultLambda.apply(result));
+        
+        return memberDto;
     }
 }

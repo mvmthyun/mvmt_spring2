@@ -240,18 +240,12 @@
                     processData: false, // 데이터 객체를 문자열로 바꿀지에 대한 값이다.
                     success: function (res) {
                         console.log(res);
-
-                        // searchInputId.val(res.memberId);
-                        // searchInputPwd.val(res.memberPassword);
-                        // searchInputName.val(res.memberName);
-                        // searchInputPhone.val(res.memberNumber);
-                        // searchInputAddr.val(res.memberAddr);
-
-                        searchInputId.val(${ member.memberId });
-                        searchInputPwd.val(${ member.memberPassword });
-                        searchInputName.val(${ member.memberName });
-                        searchInputPhone.val(${ member.memberNumber });
-                        searchInputAddr.val(${ member.memberAddr });
+  
+                        searchInputId.val(res.memberId);
+                        searchInputPwd.val(res.memberPassword);
+                        searchInputName.val(res.memberName);
+                        searchInputPhone.val(res.memberNumber);
+                        searchInputAddr.val(res.memberAddr);
                     },
                     error: function (xhr) {
                         console.log(xhr);
