@@ -11,13 +11,16 @@ import org.springframework.stereotype.Repository;
 import com.bansuck.proj.p2.dto.MemberDto;
 
 @Repository(value="memberDao")
-@Transactional
 public class MemberDao {
 
     @Autowired
-    SqlSession session;
+    private SqlSession session;
     
     String nameSpace = "com.bansuck.proj.p2.mappers.MEMBER_psql.";
+
+    public int memberInsert(MemberDto memberDto) throws Exception {
+        return session.insert(nameSpace + "memberInsert", memberDto);
+    }
     
     public List<?> memberSelectListAll(MemberDto memberDto) throws Exception {
         return session.selectList(nameSpace + "memberSelectListAll", memberDto);

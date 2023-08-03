@@ -16,6 +16,32 @@
 		<result property="memberActivation" column="MEMBER_ACTIVATION" />
     </resultMap>
     
+    <!-- 사용자 가입 -->
+    <insert id="memberInsert" parameterType="memberDto">
+		INSERT INTO bansuck.MEMBERS (
+		    MEMBER_ID
+		    , MEMBER_PASSWORD
+		    , MEMBER_EMAIL
+		    , MEMBER_NAME
+		    , MEMBER_NUMBER
+		    , MEMBER_ADDR
+		    , MEMBER_CREATE_AT
+		    , MEMBER_MODIFIED_AT
+		    , MEMBER_ACTIVATION
+		)
+		VALUES(
+		    #{memberId}
+	        , #{memberPassword}
+	        , #{memberEmail}
+	        , #{memberName}
+	        , #{memberNumber}
+	        , #{memberAddr}
+		    , now()
+		    , NULL
+		    , default
+		)
+    </insert>
+    
     <!-- 사용자 전체 조회 -->
     <select id="memberSelectListAll" parameterType="MemberDto" resultMap="memberDto">
 		SELECT *

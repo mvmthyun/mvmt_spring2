@@ -5,10 +5,20 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.bansuck.proj.p2.dto.MemberDto;
+import com.bansuck.proj.p2.dto.MemberRoleDto;
+import com.bansuck.proj.p2.security.UserDbService;
 
-@Service
-public interface MemberService {
+@Service("memberService")
+public interface MemberService extends UserDbService {
 
+    /**
+     * 사용자 등록
+     * @param memberDto
+     * @return
+     * @throws Exception
+     */
+    public int memberInsert(MemberDto memberDto) throws Exception;
+    
     /**
      * 사용자 정보 전체 조회
      * @param memberDto
@@ -40,4 +50,12 @@ public interface MemberService {
      * @throws Exception
      */
     public int memberDeleteOne(MemberDto memberDto) throws Exception;
+    
+    /**
+     * 사용자 권한 추가
+     * @param memberRoleDto
+     * @return
+     * @throws Exception
+     */
+    public int memberRoleInsert(MemberRoleDto memberRoleDto) throws Exception;
 }

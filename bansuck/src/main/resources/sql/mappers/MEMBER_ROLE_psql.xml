@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bansuck.proj.p2.mappers.MEMBER_psql">
+
+	<!-- DB 전송 타입 -->
+    <resultMap id="memberRoleDto" type="MemberRoleDto">
+        <result property="memberEmail" column="MEMBER_EMAIL" />
+		<result property="roleName" column="ROLE_NAME" />
+    </resultMap>
+    
+    <!-- 사용자 가입 -->
+    <insert id="memberRoleInsert" parameterType="memberRoleDto">
+		INSERT INTO bansuck.MEMBERS_ROLE (
+		    MEMBER_EMAIL
+		    , ROLE_NAME
+		)
+		VALUES(
+		    #{memberEmail}
+	        , #{roleName}
+		)
+    </insert>
+
+</mapper>
